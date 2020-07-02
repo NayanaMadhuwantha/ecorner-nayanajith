@@ -1,0 +1,11 @@
+<?php
+require 'db.php';
+$id = $_GET['id'];
+//delete query 
+$sql = 'DELETE FROM tbl_user WHERE U_id=:id';
+$statement = $connection->prepare($sql);
+if ($statement->execute([':id' => $id])) 
+{
+  header("Location://localhost/ecorner/admin/account/a_detail.php ");
+}
+?>
