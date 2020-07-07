@@ -66,8 +66,8 @@
 <!-- Navbar section-->
   <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light ">
       <span class="navbar-brand mb-0 h1"><b>Coffee Shop Store</b></span>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="navbar-toggler">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="navbar-toggler" style="visibility: hidden;">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -201,7 +201,7 @@
 //remove the product form cart table      
       $(document).on('click', '.delete', function(){  
            var product_id = $(this).attr("id");  
-           var action = "remove";  
+           var action = "remove";
            if(confirm("Are you sure you want to remove this product?"))  
            {  
                 $.ajax({  

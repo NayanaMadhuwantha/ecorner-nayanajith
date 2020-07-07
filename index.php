@@ -142,7 +142,7 @@ $result = mysqli_query($conn, $sql);
       <div class="container">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <div class="row" style="padding: 2%;">
-              <div class="col-md-12 col-lg-12" style="text-align: center; color: white; background-color:  rgb(217, 26, 70); border-radius: 25px;">
+              <div class="col-md-12 col-lg-12" style="text-align: center; color: #a3254a;">
                 <label><h3><b>Coffee</b></h3></label>
               </div>
               <div class="col-md-12 col-lg-12" >  
@@ -171,9 +171,9 @@ $result = mysqli_query($conn, $sql);
                                ?>        
                           </div> 
               </div>
-              <div class="col-md-12 col-lg-12" style="text-align: center; padding-top: 2%;">
+              <!--<div class="col-md-12 col-lg-12" style="text-align: center; padding-top: 2%;">
                 <a href="#" class="btn btn-light">View All</a>
-              </div>
+              </div>-->
             </div>            
           </div>
         </div>
@@ -186,7 +186,7 @@ $result = mysqli_query($conn, $sql);
       <div class="container">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <div class="row" style="padding: 2%;">
-              <div class="col-md-12 col-lg-12" style="text-align: center; color: white; background-color:  rgb(217, 26, 70); border-radius: 25px;">
+              <div class="col-md-12 col-lg-12" style="text-align: center; color: #a3254a; ">
                 <label><h3><b>Main Dish</b></h3></label>
               </div>
               <div class="col-md-12 col-lg-12" >  
@@ -215,9 +215,9 @@ $result = mysqli_query($conn, $sql);
                                ?>        
                           </div> 
               </div>
-              <div class="col-md-12 col-lg-12" style="text-align: center; padding-top: 2%;">
+              <!--<div class="col-md-12 col-lg-12" style="text-align: center; padding-top: 2%;">
                 <a href="#" class="btn btn-light">View All</a>
-              </div>
+              </div>-->
             </div>            
           </div>
         </div>
@@ -231,7 +231,7 @@ $result = mysqli_query($conn, $sql);
     
       <div class="container">
         <div class="row">
-          <div class="col-md-12 col-lg-12" style="text-align: center; color: white; background-color:  rgb(217, 26, 70); border-radius: 25px;">
+          <div class="col-md-12 col-lg-12" style="text-align: center; color: #a3254a;">
             <label><h3><b>Drinks</b></h3></label>
           </div>
           <div class="col-md-12 col-lg-12" >  
@@ -260,9 +260,9 @@ $result = mysqli_query($conn, $sql);
                            ?>        
                       </div> 
           </div>
-          <div class="col-md-12 col-lg-12" style="text-align: center; padding-top: 2%;">
+          <!--<div class="col-md-12 col-lg-12" style="text-align: center; padding-top: 2%;">
             <a href="#" class="btn btn-light">View All</a>
-          </div>
+          </div>-->
         </div>            
       </div>
   </div>
@@ -272,7 +272,7 @@ $result = mysqli_query($conn, $sql);
     
       <div class="container">
         <div class="row">
-          <div class="col-md-12 col-lg-12" style="text-align: center; color: white; background-color:  rgb(217, 26, 70); border-radius: 25px;">
+          <div class="col-md-12 col-lg-12" style="text-align: center; color: #a3254a;">
             <label><h3><b>Desserts</b></h3></label>
           </div>
           <div class="col-md-12 col-lg-12" >  
@@ -302,9 +302,9 @@ $result = mysqli_query($conn, $sql);
                            ?>        
                       </div> 
           </div>
-          <div class="col-md-12 col-lg-12" style="text-align: center; padding-top: 2%;">
+          <!--<div class="col-md-12 col-lg-12" style="text-align: center; padding-top: 2%;">
             <a href="#" class="btn btn-light">View All</a>
-          </div>
+          </div>-->
         </div>            
       </div>
   </div>
