@@ -7,8 +7,9 @@ $dateTime = $dateNow." ".$timeNow;
 $connect = mysqli_connect("localhost", "root", "", "ecorner");
 if(!empty($_SESSION["shopping_cart"])){
     foreach($_SESSION["shopping_cart"] as $keys => $values) {
-        for ($i = 0; $i<$values["product_quantity"];$i++){
+        //for ($i = 0; $i<$values["product_quantity"];$i++){
             $P_id = $values["product_id"];
+            $H_quantity = $values["product_quantity"];
 
             $query = "SELECT P_quantity FROM tbl_products WHERE P_id = $P_id";
             $result = mysqli_query($connect, $query);
@@ -23,13 +24,13 @@ if(!empty($_SESSION["shopping_cart"])){
             } else {
                 echo "Error updating record: " . $connect->error;
             }
-            $query3 = "INSERT INTO tbl_history(P_id,H_date_time) VALUES ('$P_id','$dateTime')";
+            $query3 = "INSERT INTO tbl_history(P_id,H_quantity,H_date_time) VALUES ('$P_id','$H_quantity','$dateTime')";
             if ($connect->query($query3) === TRUE) {
                 //echo "P_id ".$P_id." Record updated successfully<br>";
             } else {
                 echo "Error updating record: " . $connect->error;
             }
-        }
+        //}
     }
 }
 $_SESSION["shopping_cart"] = null;
