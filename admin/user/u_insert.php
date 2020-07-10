@@ -166,7 +166,7 @@ if ($statement->execute([':firstname' => $firstname,':lastname' => $lastname,':u
                 <div class="col-md-6 col-lg-6" style="padding: 1%;">
                     <label for="validationCustomEmail">Email</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" id="validationCustomEmail" name="email" placeholder="Email" aria-describedby="inputGroupPrepend" required>
+                      <input type="email" class="form-control" id="validationCustomEmail" name="email" placeholder="Email" aria-describedby="inputGroupPrepend" required>
                       <div class="invalid-feedback">
                         Please insert a Email.
                       </div>
@@ -178,7 +178,7 @@ if ($statement->execute([':firstname' => $firstname,':lastname' => $lastname,':u
                 <div class="col-md-6 col-lg-6" style="padding: 1%;">
                     <label for="validationCustomPassword">Password</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" id="validationCustomPassword" name="password" placeholder="Password" aria-describedby="inputGroupPrepend" required>
+                      <input type="password" class="form-control" id="validationCustomPassword" name="password" placeholder="Password" aria-describedby="inputGroupPrepend" required>
                       <div class="invalid-feedback">
                         Please insert a Password.
                       </div>
@@ -187,7 +187,7 @@ if ($statement->execute([':firstname' => $firstname,':lastname' => $lastname,':u
                 <div class="col-md-6 col-lg-6" style="padding: 1%;">
                     <label for="validationCustomconfirmpassword">Confirm Password</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" id="validationCustomconfirmpassword" name="confirmpassword" placeholder="Confirm Password" aria-describedby="inputGroupPrepend" required>
+                      <input type="password" class="form-control" id="validationCustomconfirmpassword" name="confirmpassword" placeholder="Confirm Password" aria-describedby="inputGroupPrepend" required>
                       <div class="invalid-feedback">
                         Please insert a Confirm Password.
                       </div>
@@ -208,7 +208,7 @@ if ($statement->execute([':firstname' => $firstname,':lastname' => $lastname,':u
                 <div class="col-md-6 col-lg-6" style="padding: 1%;">
                     <label for="validationCustomMobile">Mobile</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" id="validationCustomMobile" name="mobilenumber" placeholder="Mobile" aria-describedby="inputGroupPrepend" required>
+                      <input type="text" class="form-control" id="validationCustomMobile" name="mobilenumber" placeholder="Mobile" aria-describedby="inputGroupPrepend" pattern="[0-9]{10}" required>
                       <div class="invalid-feedback">
                         Please insert a Mobile.
                       </div>

@@ -143,7 +143,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="input-group">
-                <a href="set_inventory.php" id="buy_btn" class="btn btn-primary" role="button">Buy</a>
+                <a href="payment_receipt.php" id="buy_btn" class="btn btn-primary" role="button">Buy</a>
                 </div>
               </div>
             </div>

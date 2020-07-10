@@ -148,7 +148,7 @@ if ($statement->execute([':name' => $Name,':category' => $Category,':price' => $
               <div class="col-md-6 col-lg-6" style="padding: 1%;">
                 <label for="validationCustomprice">Product Price</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="validationCustomprice" name="price" placeholder="Product Price" aria-describedby="inputGroupPrepend" required>
+                  <input type="number" class="form-control" id="validationCustomprice" name="price" placeholder="Product Price" aria-describedby="inputGroupPrepend" required>
                   <div class="invalid-feedback">
                     Please insert a Product Price.
                   </div>
@@ -169,7 +169,7 @@ if ($statement->execute([':name' => $Name,':category' => $Category,':price' => $
               <div class="col-md-6 col-lg-6" style="padding: 1%;">
                 <label for="validationCustomquantity">Product Quantity</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="validationCustomquantity" name="quantity" placeholder="Product Quantity" aria-describedby="inputGroupPrepend" required>
+                  <input type="number" class="form-control" id="validationCustomquantity" name="quantity" placeholder="Product Quantity" aria-describedby="inputGroupPrepend" required>
                   <div class="invalid-feedback">
                     Please insert a Product Quantity.
                   </div>
