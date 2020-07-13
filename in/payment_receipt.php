@@ -155,7 +155,19 @@ $connect = mysqli_connect("localhost", "root", "", "ecorner");
                         <td>   </td>
                         <td>   </td>
                         <td class="text-right"><h4><strong>Total: </strong></h4></td>
-                        <td class="text-center text-danger"><h4><strong><?=$total?></strong></h4></td>
+                        <td class="text-center text-danger"><h4><strong id="payment-total"><?=$total?></strong></h4></td>
+                    </tr>
+                    <tr>
+                        <td>Advance payment</td>
+                        <td></td>
+                        <td></td>
+                        <td><input id="payment-advance" type="number" style="width: 100px" oninput="calculateBalance();"></td>
+                    </tr>
+                    <tr>
+                        <td>Balance</td>
+                        <td></td>
+                        <td></td>
+                        <td id="payment-balance"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -169,5 +181,20 @@ $connect = mysqli_connect("localhost", "root", "", "ecorner");
             </div>
         </div>
     </div>
+    <script>
+        function calculateBalance() {
+            var advance = document.getElementById("payment-advance").value;
+            var total = document.getElementById("payment-total").innerText;
+            var balance = advance - total;
+
+            if (balance > 0) {
+                document.getElementById("payment-balance").innerText = balance;
+            }
+            else {
+                document.getElementById("payment-balance").innerText = '';
+            }
+
+        }
+    </script>
 </body>
 </html>
