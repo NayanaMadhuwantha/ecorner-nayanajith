@@ -8,3 +8,8 @@ Project report also needed to improve with added functions accordingly.
 
 Irosha Dasanayaka
 Show quoted text
+
+1)User sign up page validation
+2)Printable invoice
+
+3) Calculation part

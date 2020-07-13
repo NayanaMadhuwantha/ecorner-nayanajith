@@ -50,7 +50,11 @@ $connect = mysqli_connect("localhost", "root", "", "ecorner");
         #image:hover{
             box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
-
+        @media print {
+            .printPageButton {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -155,8 +159,10 @@ $connect = mysqli_connect("localhost", "root", "", "ecorner");
                     </tr>
                     </tbody>
                 </table>
+                <button class="btn btn-success btn-lg printPageButton"  style="height: 48px; margin-left: 320px;" onclick="window.print()">Print</button>
+                &nbsp;&nbsp;&nbsp;
                 <form action="set_inventory.php">
-                    <button type="submit" class="btn btn-success btn-lg btn-block">
+                    <button type="submit" class="btn btn-success btn-lg btn-block printPageButton">
                         Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
                     </button></td>
                 </form>
