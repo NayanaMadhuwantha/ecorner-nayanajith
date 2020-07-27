@@ -157,7 +157,7 @@ if ($statement->execute([':firstname' => $firstname,':lastname' => $lastname,':u
                 <div class="col-md-6 col-lg-6" style="padding: 1%;">
                     <label for="validationCustomUsername">Username</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" id="validationCustomUsername" name="username" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                      <input type="text" class="form-control" id="validationCustomUsername" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,20}$" name="username" placeholder="Username" aria-describedby="inputGroupPrepend" required>
                       <div class="invalid-feedback">
                         Please insert a Username.
                       </div>

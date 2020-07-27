@@ -137,6 +137,8 @@ if (isset($_POST['year']) && isset($_POST['month'])){
                             <thead>
                             <tr>
                                 <th>Product</th>
+                                <th>Date</th>
+                                <th>Time</th>
                                 <th>Category</th>
                                 <th>Unit Price/LKR</th>
                                 <th>Quantity</th>
@@ -162,9 +164,12 @@ if (isset($_POST['year']) && isset($_POST['month'])){
 
                     $query2 = "SELECT * FROM tbl_history WHERE P_id = $current_P_id";
                     $result2 = mysqli_query($connect, $query2);
+                    $H_date = null;
+                    $H_time = null;
                     while ($row2 = mysqli_fetch_array($result2)) {
                         //var_dump($row2['P_id']);
                         $H_date_time = $row2['H_date_time'];
+                        $H_time = explode(" ", $H_date_time)[1];
                         $H_date = explode(" ", $H_date_time)[0];
                         $H_year = explode("-", $H_date)[0];
                         $H_month = explode("-", $H_date)[1];
@@ -182,6 +187,8 @@ if (isset($_POST['year']) && isset($_POST['month'])){
                         echo "
                                     <tr>
                                         <td>$current_P_name</td>
+                                        <td>$H_date</td>
+                                        <td>$H_time</td>
                                         <td>$current_P_category</td>
                                         <td>$current_P_price</td>
                                         <td>$current_P_quantity</td>
@@ -248,16 +255,16 @@ if (isset($_POST['year']) && isset($_POST['month'])){
             <form action='a_report.php' method='post'>
             <br>
                 <div class='form-group'>
-                    <label for='email'>Select year</label>
+                    <label for='email' style='width: 100px'>Select year</label>
                     <input type='text' name='year' id='yearpicker' />
                 </div>
                 <br>
                 <div class='form-group'>
-                    <label for='email'>Select month</label>
+                    <label for='email' style='width: 100px'>Select month</label>
                     <input type='text' name='month' id='monthpicker' />
                 </div> 
                 <br>
-                <button type='submit' class='btn btn-primary'>Submit</button>
+                <button type='submit' class='btn btn-primary'>Generate</button>
             </form>
             </div>";
         }
@@ -292,6 +299,7 @@ if (isset($_POST['year']) && isset($_POST['month'])){
 
         $('#table-report').DataTable( {
             dom: 'Bfrtip',
+            bPaginate: false,
             buttons: [
                 'copy',
                 {

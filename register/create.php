@@ -97,7 +97,7 @@ if (isset($_POST['reg_user'])) {
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><b>eCorner DVD Store</b></a>
+      <a class="navbar-brand" href="#"><b>eCorner</b></a>
     </div>
     <ul class="nav navbar-nav">
       
@@ -140,7 +140,7 @@ if (isset($_POST['reg_user'])) {
         </div>
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" name="username" id="username" class="form-control" value="<?php echo $username;?>" placeholder="Username" required>
+          <input type="text" name="username" id="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,20}$" class="form-control" value="<?php echo $username;?>" placeholder="Username" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>

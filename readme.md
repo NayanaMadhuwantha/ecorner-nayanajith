@@ -13,3 +13,12 @@ Show quoted text
 2)Printable invoice
 
 3) Calculation part
+
+++++++++++++++
+
+http://localhost/ecorner/v13/log/a_insert.php
+Username validation
+http://localhost/ecorner/v13/admin/a_signin.php
+http://localhost/ecorner/v13/admin/account/a_report.php
+
+http://localhost/ecorner/v13/admin/user/u_insert.php

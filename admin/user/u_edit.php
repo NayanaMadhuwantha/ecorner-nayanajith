@@ -160,7 +160,7 @@ if (isset ($_POST['firstname'])  && isset ($_POST['lastname'])  && isset ($_POST
                 <div class="col-md-6 col-lg-6" style="padding: 1%;">
                     <label for="validationCustomUsername">Username</label>
                     <div class="input-group">
-                      <input value="<?= $user->A_username; ?>" type="text" class="form-control" id="validationCustomUsername" name="username" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                      <input value="<?= $user->A_username; ?>" type="text" class="form-control" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,20}$" id="validationCustomUsername" name="username" placeholder="Username" aria-describedby="inputGroupPrepend" required>
                       <div class="invalid-feedback">
                         Please insert a Username.
                       </div>

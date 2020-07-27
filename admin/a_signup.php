@@ -63,7 +63,7 @@ if ($statement->execute([':firstname' => $firstname, ':lastname' => $lastname, '
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">eCorner DVD Store</a>
+      <a class="navbar-brand" href="#">eCorner</a>
     </div>
     <ul class="nav navbar-nav">
       
@@ -101,7 +101,7 @@ if ($statement->execute([':firstname' => $firstname, ':lastname' => $lastname, '
         </div>
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" name="username" id="username" class="form-control" placeholder="Username eg :- Johnnyphilip999" required>
+          <input type="text" name="username" id="username" class="form-control" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,20}$" placeholder="Username eg :- Johnnyphilip999" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
@@ -133,7 +133,7 @@ if ($statement->execute([':firstname' => $firstname, ':lastname' => $lastname, '
         </div>
         <div class="form-group">
           <label for="telephone">Telephone</label>
-          <input type="text" name="telephone" id="telephone" class="form-control" placeholder="Telephone eg :- 032XXXXXXX" required>
+          <input type="text" name="telephone" id="telephone" class="form-control" pattern="[0-9]{10}" placeholder="Telephone eg :- 032XXXXXXX" required>
         </div>
         <div class="form-group">
           <label for="mobilenumber">Mobilenumber</label>

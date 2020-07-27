@@ -65,7 +65,7 @@ else
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><b>eCorner DVD Store</b></a>
+      <a class="navbar-brand" href="#"><b>eCorner</b></a>
     </div>
     <ul class="nav navbar-nav">
       

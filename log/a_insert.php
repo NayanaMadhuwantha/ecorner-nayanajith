@@ -74,7 +74,7 @@
 
 <!-- Navbar section-->
   <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light ">
-      <span class="navbar-brand mb-0 h1"><b>eCorner DVD Store</b></span>
+      <span class="navbar-brand mb-0 h1"><b>eCorner</b></span>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="navbar-toggler">
         <span class="navbar-toggler-icon"></span>
@@ -148,7 +148,7 @@
               <div class="col-md-6 col-lg-6" style="padding: 1%;">
                 <label for="validationCustomUsername">Username</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="validationCustomUsername" name="username" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                  <input type="text" class="form-control" id="validationCustomUsername" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,20}$" name="username" placeholder="Username" aria-describedby="inputGroupPrepend" required>
                   <div class="invalid-feedback">
                     Please insert a Username.
                   </div>
