@@ -485,7 +485,7 @@ if (isset($_POST['date_from']) && isset($_POST['date_to'])){
                     messageTop: function () {
                         return '<?php
                                 if ($filter == "duration"){
-                                    echo "Order report - $date_from To $date_to";
+                                    echo "Sales report - $date_from To $date_to";
                                 }
                                 else{
                                     echo $filter;
