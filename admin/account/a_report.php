@@ -11,9 +11,13 @@ $connect = mysqli_connect("localhost", "root", "", "ecorner");
 $query = "SELECT * FROM tbl_products";
 $result = mysqli_query($connect, $query);
 $filter = null;
+$date_from = null;
+$date_to = null;
 
 if (isset($_POST['back'])){
-    $filter = null;
+    $filter = false;
+    $date_from = null;
+    $date_to = null;
 }
 
 if (isset($_POST['year']) && isset($_POST['month'])){
@@ -23,6 +27,12 @@ if (isset($_POST['year']) && isset($_POST['month'])){
     else if (strlen($_POST['year']) == 4){
         $filter = $_POST['year'];
     }
+}
+
+if (isset($_POST['date_from']) && isset($_POST['date_to'])){
+    $filter = "duration";
+    $date_from = $_POST['date_from'];
+    $date_to = $_POST['date_to'];
 }
 
  ?>
@@ -113,7 +123,143 @@ if (isset($_POST['year']) && isset($_POST['month'])){
 
 	<div class="container-fluid">
         <?php
-        if ($filter) {
+        if ($filter == "duration"){
+            echo "
+                
+            <div class='container'style='padding-bottom: 0px'>
+            <form action='a_report.php' method='post'>
+                <input type='hidden' name='back' value='true'>
+                <button class='btn btn-success'>Back</button>
+            </form>
+                <div class='row'>
+                
+                    <div class='col-sm'>
+                        <center><h2 style='background-color: #6f93ff; color: rgb(247,249,247); border-radius: 3px; padding: 15px'>Sales Report</h2></center>
+                        <h4 style='color: #103674'>eCorner - Coffee Shop Store</h4>
+                        <h5 style='color: #000b74'>$date_from To $date_to</h5>
+                    </div>
+                </div>
+            </div>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-md-12'>
+                        <table id='table-report' class='display'>
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Category</th>
+                                <th>Unit Price/LKR</th>
+                                <th>Quantity</th>
+                                <th>Total/LKR</th>
+                            </tr>
+                            </thead>
+                            <tbody>";
+
+            $total_categories = 0;
+            $total_units = 0;
+            $total_price = 0;
+            while ($row = mysqli_fetch_array($result)) {
+                $current_P_id = $row['P_id'];
+                $current_P_name = $row['P_name'];
+                $current_P_category = $row['P_category'];
+                $current_P_price = $row['P_price'];
+                $current_P_quantity = 0;
+
+                //for filter
+                $H_year = null;
+                $H_year_and_month = null;
+
+
+                $query2 = "SELECT * FROM tbl_history WHERE P_id = $current_P_id";
+                $result2 = mysqli_query($connect, $query2);
+                $H_date = null;
+                $H_time = null;
+                $current_Date = null;
+                $DateBegin = date('Y-m-d', strtotime($date_from));
+                $DateEnd = date('Y-m-d', strtotime($date_to));
+
+                while ($row2 = mysqli_fetch_array($result2)) {
+                    //var_dump($row2['P_id']);
+                    $H_date_time = $row2['H_date_time'];
+                    $H_time = explode(" ", $H_date_time)[1];
+                    $H_date = explode(" ", $H_date_time)[0];
+                    $H_year = explode("-", $H_date)[0];
+                    $H_month = explode("-", $H_date)[1];
+                    $H_year_and_month = $H_year . "-" . $H_month;
+
+                    $current_Date = date('Y-m-d', strtotime($H_date));
+                    $current_P_quantity += $row2['H_quantity'];
+                }
+
+                if ($current_P_quantity > 0 && (($current_Date >= $DateBegin) && ($current_Date <= $DateEnd))) {
+                    $current_P_total = $current_P_price * $current_P_quantity;
+                    $total_units += $current_P_quantity;
+                    $total_price += $current_P_total;
+
+                    $total_categories++;
+                    echo "
+                                    <tr>
+                                        <td>$current_P_name</td>
+                                        <td>$H_date</td>
+                                        <td>$H_time</td>
+                                        <td>$current_P_category</td>
+                                        <td>$current_P_price</td>
+                                        <td>$current_P_quantity</td>
+                                        <td>$current_P_total</td>
+                                    </tr>
+                                ";
+                }
+            }
+            echo "
+                            <tr>
+                                <td><div style='visibility: hidden; position: absolute;'>z</div><b>Total</b></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><b>$total_units</b></td>
+                                <td><b>$total_price</b></td>
+                            </tr>
+                        ";
+
+            echo "</tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class='container' style='margin-top: 30px;'>
+                <div class='row'>
+                    <div class='col-md'>
+                        <div class='card text-white bg-success mb-3' style='max-width: 75%;'>
+                            <div class='card-header'>Total categories</div>
+                            <div class='card-body'>
+                                <center><h1 class='card-title'>$total_categories</h1></center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-md'>
+                        <div class='card text-white bg-success mb-3' style='max-width: 75%;'>
+                            <div class='card-header'>Total units</div>
+                            <div class='card-body'>
+                                <center><h1 class='card-title'>$total_units</h1></center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-md'>
+                        <div class='card text-white bg-success mb-3' style='max-width: 75%;'>
+                            <div class='card-header'>Total price/LKR</div>
+                            <div class='card-body'>
+                                <center><h1 class='card-title'>$total_price</h1></center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>";
+
+        }
+        else if ($filter) {
                 echo "
                 
             <div class='container'style='padding-bottom: 0px'>
@@ -204,6 +350,8 @@ if (isset($_POST['year']) && isset($_POST['month'])){
                                 <td><div style='visibility: hidden; position: absolute;'>z</div><b>Total</b></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
+                                <td></td>
                                 <td><b>$total_units</b></td>
                                 <td><b>$total_price</b></td>
                             </tr>
@@ -248,24 +396,46 @@ if (isset($_POST['year']) && isset($_POST['month'])){
             
 
             <div class='container'>
-            
-            <h3>Please select a year and month to generate the sales report</h3>
-            <h5>You can generate the annual reports only entering a year</h5>
+            <div class='row'>
+            <div class='col-md-6'>
+                <h3>Please select a year and month to generate the sales report</h3>
+                <h5>You can generate the annual reports only entering a year</h5>
+                <br>
+                <form action='a_report.php' method='post'>
+                <br>
+                    <div class='form-group'>
+                        <label for='email' style='width: 100px'>Select year</label>
+                        <input type='text' name='year' id='yearpicker' />
+                    </div>
+                    <br>
+                    <div class='form-group'>
+                        <label for='email' style='width: 100px'>Select month</label>
+                        <input type='text' name='month' id='monthpicker' />
+                    </div> 
+                    <br>
+                    <button type='submit' class='btn btn-primary'>Generate</button>
+                </form>
+             </div>
+             <div class='col-md-6'>
+             <h3>Please select time duration to generate the report</h3>
             <br>
             <form action='a_report.php' method='post'>
             <br>
                 <div class='form-group'>
-                    <label for='email' style='width: 100px'>Select year</label>
-                    <input type='text' name='year' id='yearpicker' />
+                    <label for='date_from' style='width: 40px'>From</label>
+                    <input type='date' name='date_from' id='date_from' required/>
                 </div>
                 <br>
                 <div class='form-group'>
-                    <label for='email' style='width: 100px'>Select month</label>
-                    <input type='text' name='month' id='monthpicker' />
+                    <label for='date_to' style='width: 40px'>To</label>
+                    <input type='date' name='date_to' id='date_to' required/>
                 </div> 
+                
                 <br>
                 <button type='submit' class='btn btn-primary'>Generate</button>
             </form>
+             </div>
+             </div>
             </div>";
         }
         ?>
@@ -313,7 +483,14 @@ if (isset($_POST['year']) && isset($_POST['month'])){
                 {
                     extend: 'print',
                     messageTop: function () {
-                        return '<?=$filter?>';
+                        return '<?php
+                                if ($filter == "duration"){
+                                    echo "Order report - $date_from To $date_to";
+                                }
+                                else{
+                                    echo $filter;
+                                }
+                            ?>';
                     },
                     messageBottom: null
                 }
